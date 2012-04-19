@@ -1,8 +1,11 @@
 ExamReviewer::Application.routes.draw do
+  devise_for :users
   devise_for :admins
 
   root :to => 'static_pages#index'
-  
+
+  resources :users, :only => [:index]
+    
   namespace :admin do
     resources :users, :only => [ :index ]
   end
