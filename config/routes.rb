@@ -4,7 +4,7 @@ ExamReviewer::Application.routes.draw do
 
   root :to => 'static_pages#index'
 
-  resources :users, :only => [:index]
+  resources :users, :only => [:index, :edit, :update]
     
   namespace :admin do
     resources :users, :only => [ :index ]
