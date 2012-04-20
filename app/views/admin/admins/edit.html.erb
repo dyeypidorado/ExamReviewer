@@ -1,0 +1,11 @@
+<h1> Edit Profile </h1>
+<%= form_for([:admin, @admin]) do |f| %>
+  <%= f.label :name, "Name" %><br/>
+  <%= f.text_field :name %><br/>
+ 
+  <%= f.submit "Edit my Account" %>
+<% end %>
+
+<br/>
+
+<%= link_to 'Change Password', edit_admin_password_path(@admin) %>

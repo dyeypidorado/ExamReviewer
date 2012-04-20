@@ -1,0 +1,5 @@
+<h1> Hello, <%= @admin.name %> </h1>
+<%= link_to 'Home', admin_admins_path %> |
+<%= link_to 'Edit Profile', edit_admin_admin_path(@admin) %> |
+<%= link_to 'My Exams', '#' %> |
+<%= link_to "Sign out", destroy_admin_session_path, :method => :delete %>
