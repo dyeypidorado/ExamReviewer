@@ -1,14 +1,21 @@
 ExamReviewer::Application.routes.draw do
-  devise_for :users
+  #devise_for :users
   devise_for :admins
 
   root :to => 'static_pages#index'
 
-  resources :users, :only => [:index, :edit, :update]
+  #resources :users, :only => [:index, :edit, :update]
     
   namespace :admin do
-    resources :users, :only => [ :index ]
+    root :to => 'admins#index'
+    resources :admins, :only => [:index, :edit, :update]
+    resources :exams do
+      resources :questions do
+        resources :choices
+      end
+    end
   end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
