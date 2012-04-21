@@ -1,0 +1,35 @@
+%h1 #{ @exam.name }'s Questions
+
+%table
+  %tr
+    %th #
+    %th Question
+    %th Date Created
+    %th Last Update
+    
+  - @questions.each do |question|
+    %tr
+      %td= question.id
+      %td= question.question
+      %td= question.created_at
+      %td<
+        = question.updated_at 
+        = " | "
+      %td<
+        = link_to 'View', admin_exam_question_path(question.exam_id, question.id)
+        = " | "
+      %td<
+        = link_to 'Edit', edit_admin_exam_question_path(question.exam_id, question.id)
+        = " | "
+      %td<
+        = link_to 'Delete', admin_exam_question_path(question.exam_id, question.id), :method => :delete
+
+%br/
+%hr
+
+.links
+  = link_to 'Add Question', new_admin_exam_question_path(@exam.id)
+  = " | "
+  = link_to 'Back to Exams', admin_exams_path
+  = " | "
+  = link_to 'Back to Home', admin_root_path

@@ -1,0 +1,15 @@
+%h1 Create Exam
+= form_for([:admin, @exam]) do |f|
+  = f.label :name, "Name" 
+  %br
+  = f.text_field :name
+  %br
+  = f.submit "Create Exam"
+
+%br
+%hr  
+
+.links
+  = link_to 'Back to Exams', admin_exams_path
+  = " | "
+  = link_to 'Back to Home', admin_root_path

@@ -1,0 +1,17 @@
+%h1 Create Question
+= form_for([:admin, :exam, @question]) do |f|
+  = f.label :question, "Question"
+  %br/
+  = f.text_field :question
+  %br/
+  = f.submit "Save my Question"
+
+%br/
+%hr
+
+.links
+  = link_to 'Back to Questions', admin_exam_questions_path(@question.exam_id)
+  = " | "
+  = link_to 'Back to Exams', admin_exams_path
+  = " | "
+  = link_to 'Back to Home', admin_root_path

@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'execjs'
 gem 'therubyracer'
+gem 'haml'
 
 
 # Gems used only for assets and not required
