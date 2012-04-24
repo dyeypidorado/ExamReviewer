@@ -5,10 +5,11 @@ ExamReviewer::Application.routes.draw do
   root :to => 'static_pages#index'
 
   resources :users, :only => [ :index, :edit, :update ] do
-    resources :tests, :only => [ :index, :new, :create ]
+    resources :reviewers, :only => [ :index ]
+    resources :exams, :only => [ :index ] do
+      resources :reviewers, :only => [ :new, :create ]
+    end
   end
-  
-  resources :exams, :only => [ :index ]
     
   namespace :admin do
     root :to => 'admins#index'
