@@ -3,8 +3,8 @@
 = " | "
 = link_to 'Edit Profile', edit_user_path(@user)
 = " | "
-= link_to 'My Tests', user_tests_path(@user.id)
+= link_to 'My Reviewers', user_reviewers_path(@user.id)
 = " | "
-= link_to 'View Exams', exams_path
+= link_to 'View Exams', user_exams_path(@user.id)
 = " | "
 = link_to "Sign out", destroy_user_session_path, :method => :delete
