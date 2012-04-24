@@ -11,7 +11,7 @@
       %td= exam.name
       %td= exam.created_at
       %td= exam.updated_at
-      %td= link_to 'Take Exam', "#"
+      %td= link_to 'Take Exam', new_user_exam_reviewer_path(@user.id, exam.id)
 
 %br
 %hr
