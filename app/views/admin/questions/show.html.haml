@@ -3,9 +3,11 @@
 
 %h3 Choices
 %ul
-  - @choices.each do |choice|
-    %li= choice.choice
-
+  -@choices.each do |choice|
+    -if choice.isCorrect
+      %li= choice.choice + " (Correct Answer) "
+    -else
+      %li= choice.choice
 %br/
 %hr
 

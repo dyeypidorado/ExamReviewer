@@ -30,7 +30,7 @@ class Admin::QuestionsController < ApplicationController
     choices = params[:question][:choices_attributes]
     if question.save
       choices.each do |choice|
-        question.choices.create(:choice => choice[1]['choice'])
+        question.choices.create(:choice => choice[1]['choice'], :isCorrect => choice[1]['isCorrect'])
       end
       redirect_to admin_exam_question_path(exam.id, question.id)
     else
@@ -45,7 +45,7 @@ class Admin::QuestionsController < ApplicationController
     if question.update_attributes(:question => params[:question][:question])
       choices.each do |choice| 
         choice_to_edit = question.choices.find(choice[1]['id'])
-        choice_to_edit.update_attributes(:choice => choice[1]['choice'])
+        choice_to_edit.update_attributes(:choice => choice[1]['choice'], :isCorrect => choice[1]['isCorrect'])
       end
       redirect_to admin_exam_question_path(exam.id, question.id)
     else

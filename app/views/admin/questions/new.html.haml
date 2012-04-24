@@ -10,6 +10,8 @@
     .fields
       = builder.label :choice, "Choice: "
       = builder.text_field :choice
+      = builder.check_box :isCorrect
+      = builder.label :isCorrect, "Correct Answer"
       = link_to "Remove", "#"
       %br/
   = link_to "Add Choice", '#'

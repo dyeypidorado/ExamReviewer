@@ -7,13 +7,16 @@
   %br/
   %br/
   = f.fields_for :choices do |builder|
-    = builder.label :choice, "Choice: "
-    = builder.text_field :choice
-    = link_to "Remove", "#"
-    %br
+    .fields
+      = builder.label :choice, "Choice: "
+      = builder.text_field :choice
+      = builder.check_box :isCorrect
+      = builder.label :isCorrect, "Correct Answer"
+      = link_to "Remove", "#"
+      %br/
   = link_to "Add Choice", '#'
-  %br
-  %br  
+  %br/
+  %br/
   = f.submit "Edit my Question"
 
 %br/
