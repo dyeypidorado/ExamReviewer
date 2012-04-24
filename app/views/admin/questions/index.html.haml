@@ -2,14 +2,12 @@
 
 %table
   %tr
-    %th #
     %th Question
     %th Date Created
     %th Last Update
     
   - @questions.each do |question|
     %tr
-      %td= question.id
       %td= question.question
       %td= question.created_at
       %td<

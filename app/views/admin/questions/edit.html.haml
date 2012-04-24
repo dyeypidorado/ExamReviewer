@@ -3,8 +3,14 @@
 = form_for([:admin, @exam, @question]) do |f|
   = f.label :question, "Question"
   %br/
-  = f.text_field :question 
+  = f.text_area :question, :rows => 3
   %br/
+  %br/
+  = f.fields_for :choices do |builder|
+    = builder.label :choice, "Choice: "
+    = builder.text_field :choice
+    %br
+  %br  
   = f.submit "Edit my Question"
 
 %br/

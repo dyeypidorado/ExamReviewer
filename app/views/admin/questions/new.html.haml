@@ -2,11 +2,21 @@
 = form_for([:admin, :exam, @question]) do |f|
   = f.label :question, "Question"
   %br/
-  = f.text_field :question
+  = f.text_area :question, :rows => 3
+  %br/
+  %br/
+
+  = f.fields_for :choices do |builder|
+    .fields
+      = builder.label :choice, "Choice: "
+      = builder.text_field :choice
+      %br/
+  = link_to "Add Choice", '#'
+  %br/
   %br/
   = f.submit "Save my Question"
 
-%br/
+%br/    
 %hr
 
 .links
