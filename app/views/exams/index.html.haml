@@ -1,0 +1,19 @@
+%h1 Exams Available
+
+%table
+  %tr
+    %th= "Exams"
+    %th= "Date Created"
+    %th= "Last Update"
+
+  - @exams.each do |exam|
+    %tr
+      %td= exam.name
+      %td= exam.created_at
+      %td= exam.updated_at
+      %td= link_to 'Take Exam', "#"
+
+%br
+%hr
+
+= link_to 'Back', root_path
