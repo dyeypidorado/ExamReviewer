@@ -1,0 +1,10 @@
+%h1 Hello, #{ @user.name }
+= link_to 'Home', users_path
+= " | "
+= link_to 'Edit Profile', edit_user_path(@user)
+= " | "
+= link_to 'My Tests', user_tests_path(@user.id)
+= " | "
+= link_to 'View Exams', exams_path
+= " | "
+= link_to "Sign out", destroy_user_session_path, :method => :delete

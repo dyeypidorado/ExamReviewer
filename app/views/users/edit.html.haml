@@ -1,0 +1,14 @@
+%h1 Edit Profile
+= form_for(@user) do |f|
+  = f.label :name, "Name"
+  %br
+  = f.text_field :name
+  %br
+  = f.submit "Edit my Account"
+
+%br
+%hr
+
+= link_to 'Change Password', edit_user_password_path(@user)
+= " | "
+= link_to 'Back', root_path

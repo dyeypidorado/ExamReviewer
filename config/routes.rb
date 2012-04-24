@@ -1,14 +1,18 @@
 ExamReviewer::Application.routes.draw do
-  #devise_for :users
+  devise_for :users
   devise_for :admins
 
   root :to => 'static_pages#index'
 
-  #resources :users, :only => [:index, :edit, :update]
+  resources :users, :only => [ :index, :edit, :update ] do
+    resources :tests, :only => [ :index, :new, :create ]
+  end
+  
+  resources :exams, :only => [ :index ]
     
   namespace :admin do
     root :to => 'admins#index'
-    resources :admins, :only => [:index, :edit, :update]
+    resources :admins, :only => [ :index, :edit, :update ]
     resources :exams do
       resources :questions do
         resources :choices
