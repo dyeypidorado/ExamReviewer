@@ -5,7 +5,7 @@ ExamReviewer::Application.routes.draw do
   root :to => 'static_pages#index'
 
   resources :users, :only => [ :index, :edit, :update ] do
-    resources :reviewers, :only => [ :index ]
+    resources :reviewers, :only => [ :index ] 
     resources :exams, :only => [ :index ] do
       resources :reviewers, :only => [ :new, :create ]
     end

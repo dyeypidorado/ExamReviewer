@@ -1,4 +1,18 @@
 %h1 Answer the Reviewer?
 
-=form_for([:user, :exam, @reviewer]) do |f|
-  =f.submit "I would like to start answering my exam"
+= form_for([:user, :exam, @reviewer]) do |f|
+  - index = 0
+  = f.fields_for :items do |builder|
+    - question = Question.find(@reviewer.items[index]['question_id'])
+    - choices = question.choices.all
+    = builder.hidden_field :question_id
+    = "Question : " + question.question
+    %br
+    -choices.each do |choice| 
+      = builder.radio_button :choice_id, choice.id
+      = builder.label :choice_id, choice.choice
+      %br
+    - index += 1
+    %br 
+    
+  =f.submit "I want to submit my answers"
