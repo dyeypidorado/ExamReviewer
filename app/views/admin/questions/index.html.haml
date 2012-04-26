@@ -9,9 +9,9 @@
   - @questions.each do |question|
     %tr
       %td= question.question
-      %td= question.created_at
+      %td= question.created_at.strftime("%c")
       %td<
-        = question.updated_at 
+        = question.updated_at.strftime("%c")
         = " | "
       %td<
         = link_to 'View', admin_exam_question_path(question.exam_id, question.id)

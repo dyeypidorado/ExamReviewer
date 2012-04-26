@@ -12,10 +12,10 @@
         = exam.name
         = " | "
       %td<
-        = exam.created_at
+        = exam.created_at.strftime("%c")
         = " | "
       %td<
-        = exam.updated_at
+        = exam.updated_at.strftime("%c")
         = " | "
       %td<
         = link_to 'View Questions', admin_exam_questions_path(exam.id)
