@@ -7,16 +7,9 @@
   %br/
   %br/
   = f.fields_for :choices do |builder|
-    .fields
-      = builder.label :choice, "Choice: "
-      = builder.text_field :choice
-      = builder.check_box :isCorrect
-      = builder.label :isCorrect, "Correct Answer"
-      = link_to "Remove", "#"
-      %br/
-  = link_to "Add Choice", '#'
-  %br/
-  %br/
+    =render 'form' , :f => builder
+  = link_to_add_fields "Add Choice", f, :choices
+  %br<
   = f.submit "Edit my Question"
 
 %br/
