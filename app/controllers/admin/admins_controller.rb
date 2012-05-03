@@ -4,6 +4,7 @@ class Admin::AdminsController < ApplicationController
   def index
     @admin = current_admin
     @admin = Admin.find(@admin.id)
+    @exam = @admin.exams.all
   end
   
   def edit

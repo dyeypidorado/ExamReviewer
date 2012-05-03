@@ -4,6 +4,31 @@
   = ' | '
   = link_to 'Edit Profile', edit_admin_admin_path(@admin)
   = ' | '
-  = link_to 'My Exams', admin_exams_path
+  = link_to 'Create New Exam', new_admin_exam_path
   = ' | '
   = link_to 'Sign out', destroy_admin_session_path, :method => :delete
+  
+%h3 My Exams
+
+%table
+  %tr
+    %th= "Name"
+    %th= "Date Created"
+    %th= "Date Updated"
+    
+  - @exam.each do |exam|  
+    %tr
+      %td<
+        = exam.name
+        = " | "
+      %td<
+        = exam.created_at.strftime("%c")
+        = " | "
+      %td<
+        = exam.updated_at.strftime("%c")
+        = " | "
+      %td<
+        = link_to 'View Questions', admin_exam_questions_path(exam.id)
+        = " | "
+      %td<
+        = link_to 'Delete', admin_exam_path(exam), :method => :delete
