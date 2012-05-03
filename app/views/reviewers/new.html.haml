@@ -14,12 +14,18 @@
         = builder.label :choice_id, choice.choice
         %br
       = link_to_function("<<Prev", "prev_item(this)")
-      = link_to_function("Check Answer", "check_answer(this,'#{reviewers_check_answer_path}')")
+      = link_to_function("Check My Answer", "check_answer(this,'#{reviewers_check_answer_path}')")
       = link_to_function("Next>>", "next_item(this)")
       - index += 1
       %br 
-    
+  %br  
   =f.submit "I want to submit my answers"
+
+%br
+%hr
+
+.links  
+  = link_to 'Back to Home', users_path
 
 :javascript
   $(document).ready( function(){
