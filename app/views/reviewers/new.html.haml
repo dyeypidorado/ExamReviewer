@@ -10,6 +10,7 @@
       - question = Question.find(@reviewer.items[index]['question_id'])
       - choices = question.choices.all
       = builder.hidden_field :question_id
+      = builder.hidden_field :isAnswered
       = "Question : " + question.question
       %br
       -choices.each do |choice|
