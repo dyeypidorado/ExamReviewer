@@ -6,12 +6,12 @@ ExamReviewer::Application.routes.draw do
   post 'reviewers/check_answer'
 
   resources :users, :only => [ :index, :edit, :update ] do
-    resources :reviewers, :only => [ :index ] 
+    resources :reviewers, :only => [ :index ]
     resources :exams, :only => [ :index ] do
       resources :reviewers, :only => [ :new, :create ]
     end
   end
-    
+
   namespace :admin do
     root :to => 'admins#index'
     resources :admins, :only => [ :index, :edit, :update ]
@@ -21,7 +21,7 @@ ExamReviewer::Application.routes.draw do
       end
     end
   end
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
