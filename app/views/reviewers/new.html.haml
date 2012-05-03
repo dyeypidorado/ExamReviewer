@@ -1,7 +1,10 @@
-%h1 Answer the Reviewer?
+- provide(:title, 'Begin Answer')
+
+%h3 Answer the Reviewer!
 
 = form_for([:user, :exam, @reviewer]) do |f|
   - index = 0
+  = f.hidden_field :exam_id
   = f.fields_for :items do |builder|
     .item
       - question = Question.find(@reviewer.items[index]['question_id'])
@@ -9,7 +12,7 @@
       = builder.hidden_field :question_id
       = "Question : " + question.question
       %br
-      -choices.each do |choice| 
+      -choices.each do |choice|
         = builder.radio_button :choice_id, choice.id
         = builder.label :choice_id, choice.choice
         %br
@@ -17,15 +20,15 @@
       = link_to_function("Check My Answer", "check_answer(this,'#{reviewers_check_answer_path}')")
       = link_to_function("Next>>", "next_item(this)")
       - index += 1
-      %br 
-  %br  
+      %br
+  %br
   =f.submit "I want to submit my answers"
 
 %br
 %hr
 
-.links  
-  = link_to 'Back to Home', users_path
+.links
+  = link_to 'Cancel', users_path
 
 :javascript
   $(document).ready( function(){
