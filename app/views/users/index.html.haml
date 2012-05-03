@@ -3,8 +3,23 @@
 = " | "
 = link_to 'Edit Profile', edit_user_path(@user)
 = " | "
-= link_to 'My Reviewers', user_reviewers_path(@user.id)
-= " | "
 = link_to 'View Exams', user_exams_path(@user.id)
 = " | "
 = link_to "Sign out", destroy_user_session_path, :method => :delete
+
+%h3 My Answered Reviewers
+%table
+  %tr
+    %th= "Exam Name"
+    %th= "Date Taken"
+    %th= "Answered Items"
+    %th= "Correct Items"
+
+  -@reviewers.each do |reviewer|
+    - exam = Exam.find(reviewer.exam_id)
+    %tr
+      %td= exam.name
+      %td= reviewer.created_at.strftime("%c")
+      %td= reviewer.items_answered
+      %td= reviewer.correct_items
+      %td= link_to 'Retake Exam', new_user_exam_reviewer_path(reviewer.user_id, reviewer.exam_id)

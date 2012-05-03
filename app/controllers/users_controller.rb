@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def index
     @user = current_user
     @user = User.find(@user.id)
+    @reviewers = @user.reviewers.all
   end
     
   def edit
