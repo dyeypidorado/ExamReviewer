@@ -1,5 +1,7 @@
+- provide(:title, 'Show Question')
+
 %h3 Question:
-%p= @question.question 
+%p= @question.question
 
 %h3 Choices
 %ul
@@ -13,8 +15,3 @@
 
 .links
   = link_to 'Back to Questions', admin_exam_questions_path(@exam.id)
-  = " | "
-  = link_to 'Back to Exams', admin_exams_path
-  = " | "
-  = link_to 'Back to Home', admin_root_path  
-

@@ -1,32 +1,29 @@
-%h1 My Exams
+- provide(:title, 'Home')
 
-%table
-  %tr
-    %th= "Name"
-    %th= "Date Created"
-    %th= "Date Updated"
-    
-  - @exam.each do |exam|  
+%h3 My Exams
+
+- if @exam.count == 0
+  = "No exams created."
+- else
+  %table
     %tr
-      %td<
-        = exam.name
-        = " | "
-      %td<
-        = exam.created_at.strftime("%c")
-        = " | "
-      %td<
-        = exam.updated_at.strftime("%c")
-        = " | "
-      %td<
-        = link_to 'View Questions', admin_exam_questions_path(exam.id)
-        = " | "
-      %td<
-        = link_to 'Delete', admin_exam_path(exam), :method => :delete
-    
-%br
-%hr
+      %th= "Name"
+      %th= "Date Created"
+      %th= "Date Updated"
 
-.links
-  = link_to 'Create New Exam', new_admin_exam_path
-  = " | "
-  = link_to 'Back to Home', admin_root_path
+    - @exam.each do |exam|
+      %tr
+        %td<
+          = exam.name
+          = " | "
+        %td<
+          = exam.created_at.strftime("%c")
+          = " | "
+        %td<
+          = exam.updated_at.strftime("%c")
+          = " | "
+        %td<
+          = link_to 'View Questions', admin_exam_questions_path(exam.id)
+          = " | "
+        %td<
+          = link_to 'Delete', admin_exam_path(exam), :method => :delete
