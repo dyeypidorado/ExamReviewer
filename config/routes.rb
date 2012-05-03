@@ -3,6 +3,7 @@ ExamReviewer::Application.routes.draw do
   devise_for :admins
 
   root :to => 'static_pages#index'
+  post 'reviewers/check_answer'
 
   resources :users, :only => [ :index, :edit, :update ] do
     resources :reviewers, :only => [ :index ] 

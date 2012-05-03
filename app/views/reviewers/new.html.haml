@@ -3,16 +3,27 @@
 = form_for([:user, :exam, @reviewer]) do |f|
   - index = 0
   = f.fields_for :items do |builder|
-    - question = Question.find(@reviewer.items[index]['question_id'])
-    - choices = question.choices.all
-    = builder.hidden_field :question_id
-    = "Question : " + question.question
-    %br
-    -choices.each do |choice| 
-      = builder.radio_button :choice_id, choice.id
-      = builder.label :choice_id, choice.choice
+    .item
+      - question = Question.find(@reviewer.items[index]['question_id'])
+      - choices = question.choices.all
+      = builder.hidden_field :question_id
+      = "Question : " + question.question
       %br
-    - index += 1
-    %br 
+      -choices.each do |choice| 
+        = builder.radio_button :choice_id, choice.id
+        = builder.label :choice_id, choice.choice
+        %br
+      = link_to_function("<<Prev", "prev_item(this)")
+      = link_to_function("Check Answer", "check_answer(this,'#{reviewers_check_answer_path}')")
+      = link_to_function("Next>>", "next_item(this)")
+      - index += 1
+      %br 
     
   =f.submit "I want to submit my answers"
+
+:javascript
+  $(document).ready( function(){
+    $(".item").first().nextAll(".item").hide();
+    $(".item").first().children("a").first().hide();
+    $(".item").last().children("a").last().hide();
+  });

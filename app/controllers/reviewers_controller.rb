@@ -1,4 +1,5 @@
 class ReviewersController < ApplicationController
+
   def index
     user = User.find(params[:user_id])
     @reviewers = user.reviewers.all
@@ -14,6 +15,12 @@ class ReviewersController < ApplicationController
     questions.each do |question|
       @reviewer.items.build(:question_id => question.id)
     end
+  end
+  
+  def edit
+    user = User.find(params[:user_id])
+    exam = Exam.find(params[:exam_id]) 
+    @reviewer = user.reviewers.new(params[:id])  
   end
   
   def create
@@ -38,6 +45,10 @@ class ReviewersController < ApplicationController
     if reviewer.save
       redirect_to user_reviewers_path(user.id)
     end 
+  end
+  
+  def check_answer
+    render :text => Choice.is_correct?(params[:choice])
   end
   
 end
