@@ -78,6 +78,8 @@ GEM
       activesupport (= 3.2.3)
       bundler (~> 1.0)
       railties (= 3.2.3)
+    rails3_acts_as_paranoid (0.2.2)
+      activerecord (~> 3.2)
     railties (3.2.3)
       actionpack (= 3.2.3)
       activesupport (= 3.2.3)
@@ -122,6 +124,7 @@ DEPENDENCIES
   haml
   jquery-rails
   rails (= 3.2.3)
+  rails3_acts_as_paranoid (~> 0.2.0)
   sass-rails (~> 3.2.3)
   sqlite3
   therubyracer

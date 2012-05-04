@@ -1,10 +1,17 @@
-- provide(:title, 'Edit Profile')
+- provide(:title, 'Edit Exam')
 
 %h3 Create Exam
 = form_for([:admin, @exam]) do |f|
   = f.label :name, "Name"
   %br
   = f.text_field :name
+  %br
+  = f.label :description, "Description"
+  %br
+  = f.text_area :description, :rows => 3
+  %br
+  = f.check_box :toPublish
+  = f.label :toPublish, "Publish"
   %br
   = f.submit "Create Exam"
 

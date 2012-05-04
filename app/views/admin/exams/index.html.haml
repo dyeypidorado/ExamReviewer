@@ -10,20 +10,17 @@
       %th= "Name"
       %th= "Date Created"
       %th= "Date Updated"
+      %th= "Status"
 
     - @exam.each do |exam|
       %tr
-        %td<
-          = exam.name
-          = " | "
-        %td<
-          = exam.created_at.strftime("%c")
-          = " | "
-        %td<
-          = exam.updated_at.strftime("%c")
-          = " | "
-        %td<
-          = link_to 'View Questions', admin_exam_questions_path(exam.id)
-          = " | "
-        %td<
-          = link_to 'Delete', admin_exam_path(exam), :method => :delete
+        %td= exam.name
+        %td= exam.created_at.strftime("%c")
+        %td= exam.updated_at.strftime("%c")
+        - if exam.toPublish
+          %td= 'Published'
+        - else
+          %td= 'Set as Draft'
+        %td= link_to 'View Questions', admin_exam_questions_path(exam.id)
+        %td= link_to 'Edit', edit_admin_exam_path(exam.id)
+        %td= link_to 'Delete', admin_exam_path(exam), :method => :delete
