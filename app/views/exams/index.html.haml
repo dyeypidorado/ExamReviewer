@@ -1,22 +1,22 @@
 - provide(:title, 'Exams Available')
 
 %h3 Exams Available
-
-%table
-  %tr
-    %th= "Exams"
-    %th= "Date Created"
-    %th= "Last Update"
-
-  - @exams.each do |exam|
-    %tr
-      %td= exam.name
-      %td= exam.created_at.strftime("%c")
-      %td= exam.updated_at.strftime("%c")
-      %td= link_to 'Take Exam', new_user_exam_reviewer_path(@user.id, exam.id)
-
 - if @exams.count == 0
   = "No exams available."
+- else
+  %table
+    %tr
+      %th= "Exams"
+      %th= "Date Created"
+      %th= "Last Update"
+
+    - @exams.each do |exam|
+      -if exam.toPublish
+        %tr
+          %td= exam.name
+          %td= exam.created_at.strftime("%c")
+          %td= exam.updated_at.strftime("%c")
+          %td= link_to 'Take Exam', new_user_exam_reviewer_path(@user.id, exam.id)
 
 %br
 %hr

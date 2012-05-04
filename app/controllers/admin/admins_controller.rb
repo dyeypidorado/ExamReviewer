@@ -4,7 +4,6 @@ class Admin::AdminsController < ApplicationController
   def index
     @admin = current_admin
     @admin = Admin.find(@admin.id)
-    @exams = @admin.exams.all
 
     redirect_to admin_exams_path
   end

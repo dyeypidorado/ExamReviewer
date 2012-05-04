@@ -9,7 +9,6 @@ function prev_item(link){
 }
 
 function check_answer( link, path){
-
   var choice = $(link).parent(".item").find("input[type=radio]:checked").val();
   if (choice !=null) {
     $.post(path, {choice: choice},

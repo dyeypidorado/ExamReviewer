@@ -3,12 +3,17 @@ class Admin::ExamsController < ApplicationController
 
   def index
     @admin = Admin.find(current_admin.id)
-    @exam = @admin.exams
+    @exam = @admin.exams.all
   end
 
   def new
     @admin = Admin.find(current_admin.id)
     @exam = @admin.exams.new
+  end
+
+  def edit
+    @admin = Admin.find(current_admin.id)
+    @exam = @admin.exams.find(params[:id])
   end
 
   def create
@@ -18,6 +23,16 @@ class Admin::ExamsController < ApplicationController
       redirect_to admin_exams_path
     else
       render 'new'
+    end
+  end
+
+  def update
+    @admin = Admin.find(current_admin.id)
+    edit_exam = @admin.exams.find(params[:id])
+    if edit_exam.update_attributes(params[:exam])
+      redirect_to admin_exams_path
+    else
+      render 'edit'
     end
   end
 
