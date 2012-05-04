@@ -1,4 +1,6 @@
-%h1 Create Question
+-provide(:title, 'Create Questions')
+
+%h3 Create Question
 = form_for([:admin, :exam, @question]) do |f|
   = f.label :question, "Question"
   %br/
@@ -16,3 +18,11 @@
 
 .links
   = link_to 'Cancel', admin_exam_questions_path(@question.exam_id)
+
+:javascript
+  $(document).ready(function(){
+    $("input:submit").hide();
+    $("input:checkbox").click(function(){
+      $("input:submit").show();
+    });
+  });

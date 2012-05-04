@@ -1,7 +1,6 @@
 - provide(:title, 'Begin Answer')
 
 %h3 Answer the Reviewer!
-
 = form_for([:user, :exam, @reviewer]) do |f|
   - index = 0
   = f.hidden_field :exam_id
@@ -36,4 +35,9 @@
     $(".item").first().nextAll(".item").hide();
     $(".item").first().children("a").first().hide();
     $(".item").last().children("a").last().hide();
+    $("input:submit").hide();
+    $("input:radio").click(
+      function(){
+        $("input:submit").show();
+      });
   });
