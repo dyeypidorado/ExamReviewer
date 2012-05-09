@@ -8,7 +8,7 @@ ExamReviewer::Application.routes.draw do
   resources :users, :only => [ :index, :edit, :update ] do
     resources :reviewers, :only => [ :index ]
     resources :exams, :only => [ :index ] do
-      resources :reviewers, :only => [ :new, :create ]
+      resources :reviewers, :only => [ :new, :show ]
     end
   end
 

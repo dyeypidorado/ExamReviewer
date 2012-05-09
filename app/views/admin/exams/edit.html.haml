@@ -1,6 +1,6 @@
-- provide(:title, 'Create Exam')
+- provide(:title, 'Edit Exam')
 
-%h3 Create Exam
+%h3 Edit Exam
 = form_for([:admin, @exam]) do |f|
   = f.label :name, "Name"
   %br
@@ -13,7 +13,7 @@
   = f.check_box :toPublish
   = f.label :toPublish, "Publish"
   %br
-  = f.submit "Create Exam"
+  = f.submit "Update Exam"
 
 %br
 %hr

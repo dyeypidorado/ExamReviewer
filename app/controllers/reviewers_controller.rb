@@ -7,29 +7,33 @@ class ReviewersController < ApplicationController
   end
 
   def new
-    @user = User.find(current_user.id)
+    user = User.find(current_user.id)
     exam = Exam.find(params[:exam_id])
-    @reviewer = @user.reviewers.new(:exam_id => exam.id )
-
-    questions = exam.questions.all
-
-    questions.each do |question|
-      @reviewer.items.build(:question_id => question.id)
-    end
+    
+    reviewer = user.reviewers.new()
+    reviewer.exam_id = exam.id
+    reviewer.save
+    
+    redirect_to user_exam_reviewer_path(user.id, exam.id, reviewer.id)
   end
-
-  def create
+  
+  def show
     @user = User.find(current_user.id)
-    reviewer = @user.reviewers.new(params[:reviewer])
-
-    if reviewer.save
-      reviewer.check_scores
-      redirect_to user_reviewers_path(@user.id)
-    end
+    @exam = Exam.find(params[:exam_id])
+    @questions = @exam.questions.all    
+    @reviewer = @user.reviewers.find(params[:id])
   end
 
   def check_answer
-    render :text => Choice.is_correct?(params[:choice])
+    reviewer = Reviewer.find(params[:reviewer_id])
+    item = reviewer.items.build()
+    item.choice_id = params[:choice_id]
+    item.question_id = params[:question_id]
+                             
+    if item.save
+      item.check_answer
+      render :text => Choice.is_correct?(params[:choice_id])
+    end
   end
 
 end

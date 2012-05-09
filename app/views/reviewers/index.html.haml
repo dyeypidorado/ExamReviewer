@@ -10,6 +10,7 @@
       %th= "Date Taken"
       %th= "Answered Items"
       %th= "Correct Items"
+      %th= "Action"
 
     -@reviewers.each do |reviewer|
       - exam = Exam.with_deleted.find(reviewer.exam_id)
