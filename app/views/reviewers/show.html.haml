@@ -15,20 +15,18 @@
         %br
       = link_to_function("<<Prev", "prev_item(this)")
       = link_to_function("Next>>", "next_item(this,'#{reviewers_check_answer_path}')")
-%br
-%hr
-
-.links
-  = link_to 'Back to Home', users_path
+  .link
+    = link_to 'Back to Home', users_path
 
 :javascript
   $(document).ready( function(){
+    $(".link").hide();
     $(".item").first().nextAll(".item").hide();
     $(".item").first().children("a").first().hide();
-    $(".item").last().children("a").last().replaceWith("<a href=\"#\" onclick=\"last_item(this,'/reviewers/check_answer'); return false;\">Done</a>");
+    $(".item").last().children("a").last().replaceWith("<a href=\"#\" onclick=\"next_item(this,'/reviewers/check_answer'); return false;\">Done</a>");
     
     $(".item").last().children("a").last().click(
       function(){
-        
+        $(".link").show();
     });
   });
