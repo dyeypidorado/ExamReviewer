@@ -1,34 +1,32 @@
 - provide(:title, 'Begin Answer')
 
-%h3 Answer the Reviewer!
+%h2 Answer the Reviewer!
 = form_for("#") do |f|
   - @questions.each do |question|
     .item
       = f.hidden_field :reviewer_id, :value => @reviewer.id
       = f.hidden_field :question_id, :value => question.id
       - choices = question.choices.all
-      = "Question : " + question.question
+      %h3 Question: #{question.question}
       %br
       - choices.each do |choice|
-        = f.radio_button :choice_id, choice.id
-        = f.label :choice_id, choice.choice
-        %br
+        %p
+          = f.radio_button :choice_id, choice.id
+          = choice.choice
       = link_to_function("<<Prev", "prev_item(this)")
       = link_to_function("Next>>", "next_item(this,'#{reviewers_check_answer_path}')")
-%br
-%hr
-
-.links
-  = link_to 'Back to Home', users_path
+  .link
+    = link_to 'Back to Home', users_path
 
 :javascript
   $(document).ready( function(){
+    $(".link").hide();
     $(".item").first().nextAll(".item").hide();
     $(".item").first().children("a").first().hide();
-    $(".item").last().children("a").last().replaceWith("<a href=\"#\" onclick=\"last_item(this,'/reviewers/check_answer'); return false;\">Done</a>");
+    $(".item").last().children("a").last().replaceWith("<a href=\"#\" onclick=\"next_item(this,'/reviewers/check_answer'); return false;\">Done</a>");
     
     $(".item").last().children("a").last().click(
       function(){
-        
+        $(".link").show();
     });
   });

@@ -1,8 +1,3 @@
-function last_item(link, path){
-  check_answer(link, path);
-  $(".item").remove();
-}
-
 function next_item(link, path){
   check_answer(link, path);
   $(link).parent(".item").hide();

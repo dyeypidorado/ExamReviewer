@@ -353,6 +353,7 @@ form input.button {
 
 
 
+
 }
 header {
     position: relative;
@@ -431,7 +432,7 @@ header hgroup {
     position: absolute;
     /*background: url(/assets/logo.png) no-repeat;*/
     height: 62px;
-    width: 215px;
+    width: 500px;
     display: block;
     top: 100px;
     left: 10px;
@@ -447,7 +448,7 @@ header hgroup h1 a {
     width: 215px;
 }
 header hgroup h3  {
-    text-indent: -9999em;
+    text-indent: 1em;
     height: 0;
 }
 

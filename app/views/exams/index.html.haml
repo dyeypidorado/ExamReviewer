@@ -1,6 +1,6 @@
 - provide(:title, 'Exams Available')
 
-%h3 Exams Available
+%h2 Exams Available
 - if @exams.count == 0
   = "No exams available."
 - else
@@ -9,6 +9,7 @@
       %th= "Exams"
       %th= "Date Created"
       %th= "Last Update"
+      %th= "Action"
 
     - @exams.each do |exam|
       -if exam.toPublish

@@ -1,8 +1,9 @@
 - provide(:title, 'Home')
 
-%h3 My Answered Reviewers
+%h2 My Answered Reviewers
 - if @reviewers.count == 0
   = "No reviewers taken so far."
+  =link_to 'Take an Exam', user_exams_path(@user.id)
 - else
   %table
     %tr
