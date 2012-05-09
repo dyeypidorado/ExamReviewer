@@ -5,29 +5,42 @@
       = "Review Master |"
       = yield (:title)
 
-    = stylesheet_link_tag    "application", :media => "all"
+    = stylesheet_link_tag    "application", :media => "all" 
     = javascript_include_tag "application"
     = csrf_meta_tags
-  %body
-    -if admin_signed_in?
-      %h1 Hello, #{@admin.name}
-      .links
-        = link_to 'Home', admin_root_path
-        = ' | '
-        = link_to 'Edit Profile', edit_admin_admin_path(@admin)
-        = ' | '
-        = link_to 'Create New Exam', new_admin_exam_path
-        = ' | '
-        = link_to 'Sign out', destroy_admin_session_path, :method => :delete
-    -elsif user_signed_in?
-      %h1 Hello, #{@user.name}
-      .links
-        = link_to 'Home', users_path
-        = " | "
-        = link_to 'Edit Profile', edit_user_path(@user)
-        = " | "
-        = link_to 'View Exams', user_exams_path(@user.id)
-        = " | "
-        = link_to "Sign out", destroy_user_session_path, :method => :delete
-
-    = yield
+  %body#top
+    #header-wrap
+      %header
+        -if admin_signed_in?
+          %hgroup
+            %h1 Review Master
+            %h3 Hello, #{@admin.name}
+          %nav
+            %ul
+              = link_to 'Home', admin_root_path
+              = link_to 'Edit Profile', edit_admin_admin_path(@admin)
+              = link_to 'Create New Exam', new_admin_exam_path
+              = link_to 'Sign out', destroy_admin_session_path, :method => :delete
+        -elsif user_signed_in?
+          %hgroup
+            %h1 Review Master
+            %h3 Hello, #{@user.name}
+          %nav
+            %ul
+              %li= link_to 'Home', users_path
+              %li= link_to 'Edit Profile', edit_user_path(@user)
+              %li= link_to 'View Exams', user_exams_path(@user.id)
+              %li= link_to "Sign out", destroy_user_session_path, :method => :delete
+    #content-wrap
+      #content.clearfix
+        %main
+          = yield
+    
+    %footer
+      %p
+        = "Review Master"
+        &copy;
+        = "2012"
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        = "Design by"
+        = link_to "styleshout", "http://www.styleshout.com/"
