@@ -10,7 +10,7 @@
       %h3 Question: #{question.question}
       %br
       - choices.each do |choice|
-        %p
+        %dt
           = f.radio_button :choice_id, choice.id
           = choice.choice
       = link_to_function("<<Prev", "prev_item(this)")
