@@ -224,7 +224,7 @@ table {
 }
 tr { background: #FFF; }
 th, td {
-	text-align: left;			
+	text-align: left;
 	border-width: 1px;
   	border-style: solid;
 }
@@ -448,7 +448,7 @@ header hgroup h1 a {
     width: 215px;
 }
 header hgroup h3  {
-    text-indent: 1em;
+    text-indent: -9999em;
     height: 0;
 }
 
@@ -1111,4 +1111,3 @@ ul.archive li .post-details a:hover {
     -moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.3), inset 0 1px 0 #FF7242;
     -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3), inset 0 1px 0 #FF7242;
 }
-

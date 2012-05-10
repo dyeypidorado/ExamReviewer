@@ -11,20 +11,10 @@
   %body#top
     #header-wrap
       %header
-        - if admin_signed_in?
+        - if user_signed_in?
           %hgroup
             %h1 Review Master
-            %h3 You're logged in as #{@admin.name}
-          %nav
-            %ul
-              %li= link_to 'Home', admin_root_path
-              %li= link_to 'Edit Profile', edit_admin_admin_path(@admin)
-              %li= link_to 'Create New Exam', new_admin_exam_path
-              %li= link_to 'Sign out', destroy_admin_session_path, :method => :delete
-        - elsif user_signed_in?
-          %hgroup
-            %h1 Review Master v1.0
-            %h3 You're logged in as #{@user.name}
+            %h4 You're logged in as #{@user.name}
           %nav
             %ul
               %li= link_to 'Home', users_path
@@ -39,18 +29,28 @@
               %ul
                 %li= link_to 'Home', root_path
                 %li= link_to 'Sign In', users_path
+                %li= link_to 'Sign Up', new_user_registration_path
 
     #content-wrap
       #content.clearfix
         #main
           .main-content
             = yield
+        #sidebar
+          .sidemenu
+            - if user_signed_in?
+              %h3 Links
+              %ul
+                %li= link_to 'Home', users_path
+                %li= link_to 'Edit Profile', edit_user_path(@user)
+                %li= link_to 'View Exams', user_exams_path(@user.id)
 
     %footer
-      %p
-        = "Review Master"
+      %p.footer-left
         &copy;
-        = "2012"
+        = "2012 Copyright Info"
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         = "Design by"
         = link_to "styleshout", "http://www.styleshout.com/"
+      %p.footer-right
+        = link_to 'Back to Top', "#top", :class => "back-to-top"

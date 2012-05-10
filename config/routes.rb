@@ -1,6 +1,8 @@
 ExamReviewer::Application.routes.draw do
-  devise_for :users
+  mount RailsAdmin::Engine => '/manage', :as => 'rails_admin'
+
   devise_for :admins
+  devise_for :users
 
   root :to => 'static_pages#index'
   post 'reviewers/check_answer'
@@ -12,15 +14,15 @@ ExamReviewer::Application.routes.draw do
     end
   end
 
-  namespace :admin do
-    root :to => 'admins#index'
-    resources :admins, :only => [ :index, :edit, :update ]
-    resources :exams do
-      resources :questions do
-        resources :choices
-      end
-    end
-  end
+  #namespace :admin do
+  #  root :to => 'admins#index'
+  #  resources :admins, :only => [ :index, :edit, :update ]
+  #  resources :exams do
+  #    resources :questions do
+  #      resources :choices
+  #    end
+  #  end
+  #end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -9,6 +9,10 @@ class Admin::ExamsController < ApplicationController
   def new
     @admin = Admin.find(current_admin.id)
     @exam = @admin.exams.new
+    1.times do
+      @question = @exam.questions.build
+      3.times { @question.choices.build }
+    end
   end
 
   def edit

@@ -11,6 +11,7 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'haml'
 gem "rails3_acts_as_paranoid", "~>0.2.0"
+gem 'rails_admin'
 
 
 # Gems used only for assets and not required
