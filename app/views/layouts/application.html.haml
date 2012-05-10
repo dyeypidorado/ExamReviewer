@@ -5,7 +5,7 @@
       = "Review Master |"
       = yield (:title)
 
-    = stylesheet_link_tag    "application", :media => "all" 
+    = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body#top
@@ -17,17 +17,10 @@
             %h3 You're logged in as #{@admin.name}
           %nav
             %ul
-<<<<<<< HEAD
               %li= link_to 'Home', admin_root_path
               %li= link_to 'Edit Profile', edit_admin_admin_path(@admin)
               %li= link_to 'Create New Exam', new_admin_exam_path
               %li= link_to 'Sign out', destroy_admin_session_path, :method => :delete
-=======
-              = link_to 'Home', admin_root_path
-              = link_to 'Edit Profile', edit_admin_admin_path(@admin)
-              = link_to 'Create New Exam', new_admin_exam_path
-              = link_to 'Sign out', destroy_admin_session_path, :method => :delete
->>>>>>> c53b48b539cecdda343493a10e71ee5df90cd2ce
         - elsif user_signed_in?
           %hgroup
             %h1 Review Master v1.0
@@ -46,13 +39,13 @@
               %ul
                 %li= link_to 'Home', root_path
                 %li= link_to 'Sign In', users_path
-                
+
     #content-wrap
       #content.clearfix
         #main
           .main-content
             = yield
-    
+
     %footer
       %p
         = "Review Master"

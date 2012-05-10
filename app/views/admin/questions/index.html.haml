@@ -10,6 +10,9 @@
       %th Question
       %th Date Created
       %th Last Update
+      %th
+      %th
+      %th
 
     - @questions.each do |question|
       %tr
@@ -17,13 +20,10 @@
         %td= question.created_at.strftime("%c")
         %td<
           = question.updated_at.strftime("%c")
-          = " | "
         %td<
           = link_to 'View', admin_exam_question_path(question.exam_id, question.id)
-          = " | "
         %td<
           = link_to 'Edit', edit_admin_exam_question_path(question.exam_id, question.id)
-          = " | "
         %td<
           = link_to 'Delete', admin_exam_question_path(question.exam_id, question.id), :method => :delete
 
@@ -32,5 +32,3 @@
 
 .links
   = link_to 'Add Question', new_admin_exam_question_path(@exam.id)
-  = " | "
-  = link_to 'Back', admin_root_path

@@ -24,7 +24,7 @@
     $(".item").first().nextAll(".item").hide();
     $(".item").first().children("a").first().hide();
     $(".item").last().children("a").last().replaceWith("<a href=\"#\" onclick=\"next_item(this,'/reviewers/check_answer'); return false;\">Done</a>");
-    
+
     $(".item").last().children("a").last().click(
       function(){
         $(".link").show();
